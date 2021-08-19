@@ -43,6 +43,7 @@ export const CountryInputScreen = observer(function CountryInputScreen() {
     let status = await countStore.fetchCountyDetail()
     if (status) {
       navigation.navigate("countryDetail")
+      countStore.updateWeatherDetail(null)
     }
   }
 
@@ -67,6 +68,7 @@ export const CountryInputScreen = observer(function CountryInputScreen() {
             onSubmit()
           }}
           disabled={countryName ? false : true}
+          isLoading={countStore.isLoading}
         />
       </View>
     </Screen>

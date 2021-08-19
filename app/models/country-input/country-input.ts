@@ -27,7 +27,7 @@ export const CountryInputModel = types
         if (data.kind === "ok") {
           const response = data.country
           for (let index = 0; index < response.length; index++) {
-            if (response[index].name === self.countryName) {
+            if (response[index].name.toLowerCase() === self.countryName.toLowerCase()) {
               self.countryData = response[index]
               self.isLoading = false
               isFound = true
@@ -63,6 +63,9 @@ export const CountryInputModel = types
         self.isLoading = false
       }
     }),
+    updateWeatherDetail(weatherData: any) {
+      self.weatherData = weatherData
+    },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 
 type CountryInputType = Instance<typeof CountryInputModel>

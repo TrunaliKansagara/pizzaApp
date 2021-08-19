@@ -104,8 +104,9 @@ export class Api {
   async getPost(pageNo: number): Promise<Types.GetPostResult> {
     // make the api call
     const response: ApiResponse<any> = await this.apisauce.get(
-      `search_by_date?tags=story&page=${pageNo}`,
+      `https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${pageNo}`,
     )
+    console.log("response=====", response)
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -140,7 +141,7 @@ export class Api {
       return { kind: "bad-data" }
     }
   }
-  async getWeatherDetail(capitalName: string): Promise<Types.GetCountryResult> {
+  async getWeatherDetail(capitalName: string): Promise<Types.GetWeatherResult> {
     // make the api call
     const response: ApiResponse<any> = await this.apisauce.get(
       `http://api.weatherstack.com/current?access_key=292919ac5a73a5f2305a2d4e6d27b81b&query=${capitalName}`,
@@ -155,7 +156,7 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      return { kind: "ok", country: response.data }
+      return { kind: "ok", weather: response.data }
     } catch {
       return { kind: "bad-data" }
     }
