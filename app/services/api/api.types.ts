@@ -11,7 +11,6 @@ export type GetUserResult = { kind: "ok"; user: User } | GeneralApiProblem
 
 export type GetCharactersResult = { kind: "ok"; characters: Character[] } | GeneralApiProblem
 export type GetCharacterResult = { kind: "ok"; character: Character } | GeneralApiProblem
-export type GetRandomIDResult = { kind: "ok"; randomData: any } | GeneralApiProblem
-export type GetAstDataResult = { kind: "ok"; astData: any } | GeneralApiProblem
-export type GetCountryDataResult = { kind: "ok"; countryData: any } | GeneralApiProblem
-export type GetWeatherDataResult = { kind: "ok"; weatherData: any } | GeneralApiProblem
+export type GetPostResult = { kind: "ok"; post: any } | GeneralApiProblem
+export type GetCountryResult = { kind: "ok"; country: any } | GeneralApiProblem
+export type GetWeatherResult = { kind: "ok"; weather: any } | GeneralApiProblem

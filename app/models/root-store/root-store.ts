@@ -1,7 +1,7 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
 import { CharacterStoreModel } from "../character-store/character-store"
-import { CountryModel } from "../country/country"
-import { HomeModel } from "../home/home"
+import { CountryInputModel } from "../country-input/country-input"
+import { PostListModel } from "../post-list/post-list"
 
 /**
  * A RootStore model.
@@ -9,8 +9,9 @@ import { HomeModel } from "../home/home"
 // prettier-ignore
 export const RootStoreModel = types.model("RootStore").props({
   characterStore: types.optional(CharacterStoreModel, {} as any),
-  homeStore:types.optional(HomeModel,{}as any),
-  countryStore:types.optional(CountryModel,{ } as any)
+  postListStore:types.optional(PostListModel,{} as any),
+  countStore:types.optional(CountryInputModel,{} as any)
+  
 })
 
 /**

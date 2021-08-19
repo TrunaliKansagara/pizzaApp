@@ -101,10 +101,11 @@ export class Api {
       return { kind: "bad-data" }
     }
   }
-
-  async getRandomID(): Promise<Types.GetRandomIDResult> {
+  async getPost(pageNo: number): Promise<Types.GetPostResult> {
     // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`neo/browse?api_key=${API_TOKEN}`)
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `search_by_date?tags=story&page=${pageNo}`,
+    )
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -114,35 +115,13 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      const rawUsers = response.data
-
-      return { kind: "ok", randomData: rawUsers }
+      return { kind: "ok", post: response.data }
     } catch {
       return { kind: "bad-data" }
     }
   }
 
-  async getAstData(ID: string): Promise<Types.GetAstDataResult> {
-    // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`neo/${ID}?api_key=${API_TOKEN}`)
-
-    // the typical ways to die when calling an api
-    if (!response.ok) {
-      const problem = getGeneralApiProblem(response)
-      if (problem) return problem
-    }
-
-    // transform the data into the format we are expecting
-    try {
-      const rawUsers = response.data
-
-      return { kind: "ok", astData: rawUsers }
-    } catch {
-      return { kind: "bad-data" }
-    }
-  }
-
-  async getCountryDetail(countryName: string): Promise<Types.GetCountryDataResult> {
+  async getCountryDetail(countryName: string): Promise<Types.GetCountryResult> {
     // make the api call
     const response: ApiResponse<any> = await this.apisauce.get(
       `https://restcountries.eu/rest/v2/name/${countryName}`,
@@ -156,20 +135,17 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      const rawUsers = response.data
-
-      return { kind: "ok", countryData: rawUsers }
+      return { kind: "ok", country: response.data }
     } catch {
       return { kind: "bad-data" }
     }
   }
-
-  async getWeatherDetail(capitalName: string): Promise<Types.GetWeatherDataResult> {
+  async getWeatherDetail(capitalName: string): Promise<Types.GetCountryResult> {
     // make the api call
     const response: ApiResponse<any> = await this.apisauce.get(
-      `http://api.weatherstack.com/current?access_key=85090227d0152d43e68df24fb4ef0ac2&query=new delhi`,
+      `http://api.weatherstack.com/current?access_key=292919ac5a73a5f2305a2d4e6d27b81b&query=${capitalName}`,
     )
-    console.log("response=====", response)
+    console.log("data=====", response)
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -179,9 +155,7 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      const rawUsers = response.data
-
-      return { kind: "ok", weatherData: rawUsers }
+      return { kind: "ok", country: response.data }
     } catch {
       return { kind: "bad-data" }
     }
