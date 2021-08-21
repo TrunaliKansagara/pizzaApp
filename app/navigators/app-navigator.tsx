@@ -18,6 +18,9 @@ import {
   CountryDetailScreen,
   PostListScreen,
   PostListDetailScreen,
+  CountryScreen,
+  RandomAstDataScreen,
+  RandomAstDataDetailScreen,
 } from "../screens"
 import { navigationRef } from "./navigation-utilities"
 
@@ -43,6 +46,8 @@ export type NavigatorParamList = {
   countryDetail: undefined
   postList: undefined
   postListDetail: undefined
+  randomData: undefined
+  randomDataDetail: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -62,8 +67,10 @@ const AppStack = () => {
       <Stack.Screen name="demoList" component={DemoListScreen} />
       <Stack.Screen name="postList" component={PostListScreen} />
       <Stack.Screen name="postListDetail" component={PostListDetailScreen} />
-      <Stack.Screen name="countryInput" component={CountryInputScreen} />
+      <Stack.Screen name="countryInput" component={CountryScreen} />
       <Stack.Screen name="countryDetail" component={CountryDetailScreen} />
+      <Stack.Screen name="randomData" component={RandomAstDataScreen} />
+      <Stack.Screen name="randomDataDetail" component={RandomAstDataDetailScreen} />
     </Stack.Navigator>
   )
 }

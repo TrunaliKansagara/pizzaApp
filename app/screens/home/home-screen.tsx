@@ -33,6 +33,7 @@ export const HomeScreen = observer(function HomeScreen() {
       <View>
         {renderButtons("Post List", "postList")}
         {renderButtons("County Data", "countryInput")}
+        {renderButtons("Random Ast Data", "randomData")}
       </View>
     </Screen>
   )

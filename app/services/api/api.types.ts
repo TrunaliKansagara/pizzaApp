@@ -14,3 +14,5 @@ export type GetCharacterResult = { kind: "ok"; character: Character } | GeneralA
 export type GetPostResult = { kind: "ok"; post: any } | GeneralApiProblem
 export type GetCountryResult = { kind: "ok"; country: any } | GeneralApiProblem
 export type GetWeatherResult = { kind: "ok"; weather: any } | GeneralApiProblem
+export type GetRandomIdResult = { kind: "ok"; randomId: any } | GeneralApiProblem
+export type GetAstDataResult = { kind: "ok"; astData: any } | GeneralApiProblem

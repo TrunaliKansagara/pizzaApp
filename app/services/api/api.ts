@@ -161,4 +161,43 @@ export class Api {
       return { kind: "bad-data" }
     }
   }
+
+  async getRandomId(): Promise<Types.GetRandomIdResult> {
+    // make the api call
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${API_TOKEN}`,
+    )
+
+    // the typical ways to die when calling an api
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    // transform the data into the format we are expecting
+    try {
+      return { kind: "ok", randomId: response.data }
+    } catch {
+      return { kind: "bad-data" }
+    }
+  }
+  async getAstData(randomId: string): Promise<Types.GetAstDataResult> {
+    // make the api call
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `https://api.nasa.gov/neo/rest/v1/neo/${randomId}?api_key=${API_TOKEN}`,
+    )
+
+    // the typical ways to die when calling an api
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    // transform the data into the format we are expecting
+    try {
+      return { kind: "ok", astData: response.data }
+    } catch {
+      return { kind: "bad-data" }
+    }
+  }
 }

@@ -41,11 +41,21 @@
     "submit": "submit"
   },
   "countryDetail": {
-    "capital": "Capital",
-    "population": "Population",
-    "latlng": "Latitude Longitude",
+    "capital": "Capital : ",
+    "population": "Population : ",
+    "latlng": "Latitude Longitude : ",
     "flag": "Flag :",
     "weatherDetail": "Weather Detail",
     "weather": "Weather"
+  },
+  "random": {
+    "placeholder": "Enter id",
+    "submit": "submit",
+    "randomAstId": "Random ast id"
+  },
+  "randomDetail": {
+    "name": "Name : ",
+    "url": "Url : ",
+    "precip": "Precip"
   }
 }
